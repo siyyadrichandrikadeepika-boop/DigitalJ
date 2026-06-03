@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <rect width="900" height="500" fill="#87ceeb"/>
+  <circle cx="730" cy="92" r="54" fill="#ffd166"/>
+  <path d="M0 330l170-150 120 102 118-132 172 180z" fill="#31572c"/>
+  <path d="M235 330l168-198 132 150 98-86 267 134z" fill="#4f772d"/>
+  <path d="M0 325c120-34 235-18 344 8 132 32 265 38 556-28v195H0z" fill="#176c5f"/>
+  <path d="M0 390c128-36 238-26 354 2 148 36 276 28 546-42v150H0z" fill="#0f6b7a"/>
+  <path d="M70 420c92-18 174-14 246 8 91 28 176 24 278-12 86-30 172-36 236-10" fill="none" stroke="#ffffff" stroke-width="8" opacity=".55"/>
+  <text x="450" y="462" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#ffffff">Scenery Event Invite</text>
+</svg>

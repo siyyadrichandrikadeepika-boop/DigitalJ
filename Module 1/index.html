@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local Community Event Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      background-color: #f7fbf8;
+    }
+
+    #welcomeBanner {
+      background-color: blue;
+      background-image: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <header id="mainHeader" class="site-header">
+    <a class="brand" href="#home" aria-label="Local Community Event Portal home">
+      <span class="brand-mark">LC</span>
+      <span>Community Portal</span>
+    </a>
+    <nav class="main-nav" aria-label="Primary navigation">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#register">Register</a></li>
+        <li><a href="#feedback">Feedback</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="help.html" target="_blank" rel="noopener">Help</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main -->
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">City Council Services</p>
+        <h1 style="color: red;">Local Community Event Portal</h1>
+        <p>
+          Find upcoming events, check locations, register for activities, and stay connected
+          with neighborhood updates from one simple browser-based portal.
+        </p>
+        <a class="cta-button" href="#events">Browse Events</a>
+      </div>
+      <div id="welcomeBanner" class="welcome-panel">
+        <div class="welcome-text">
+          <h2>Welcome, resident!</h2>
+          <p class="highlight">Logged-in resident access is active.</p>
+          <p><span style="color: red; font-weight: bold;">Special offer:</span> register early for priority seating at selected events.</p>
+        </div>
+        <img class="welcome-image" src="assets/unity.png" alt="Community residents together">
+      </div>
+    </section>
+
+    <section class="section-block">
+      <h2 class="section-title">Past Community Moments</h2>
+      <table class="gallery-table" aria-label="Community event image gallery">
+        <caption>Highlights from recent city council programs</caption>
+        <tbody>
+          <tr>
+            <td><img class="event-image" src="assets/music.jpg" alt="Music night crowd" title="Music Night" ondblclick="enlargeImage(this)"><span>Music Night</span></td>
+            <td><img class="event-image" src="assets/food.jpg" alt="Food drive table" title="Food Drive" ondblclick="enlargeImage(this)"><span>Food Drive</span></td>
+            <td><img class="event-image" src="assets/artfair.jpg" alt="Art fair booth" title="Art Fair" ondblclick="enlargeImage(this)"><span>Art Fair</span></td>
+          </tr>
+          <tr>
+            <td><img class="event-image" src="assets/planting.jpg" alt="Tree planting volunteers" title="Tree Planting" ondblclick="enlargeImage(this)"><span>Tree Planting</span></td>
+            <td><img class="event-image" src="assets/health.jpg" alt="Health camp desk" title="Health Camp" ondblclick="enlargeImage(this)"><span>Health Camp</span></td>
+            <td><img class="event-image" src="assets/bookfair.jpg" alt="Book fair shelves" title="Book Fair" ondblclick="enlargeImage(this)"><span>Book Fair</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="events" class="section-block">
+      <div class="section-heading-row">
+        <div>
+          <h2 class="section-title">Upcoming Events</h2>
+          <p class="section-description">Showing upcoming events with available seats.</p>
+        </div>
+        <div id="loadingSpinner" class="spinner" aria-live="polite">Loading events...</div>
+      </div>
+
+      <div class="filters" aria-label="Event filters">
+        <label>
+          Category
+          <select id="categoryFilter">
+            <option value="all">All categories</option>
+            <option value="Music">Music</option>
+            <option value="Workshop">Workshop</option>
+            <option value="Health">Health</option>
+            <option value="Environment">Environment</option>
+            <option value="Culture">Culture</option>
+          </select>
+        </label>
+        <label>
+          Search
+          <input id="searchInput" type="search" placeholder="Search by event name">
+        </label>
+      </div>
+
+      <div class="geo-panel">
+        <button id="findNearbyBtn" class="cta-button" type="button">Find Nearby Events</button>
+        <p id="geoOutput" class="muted" aria-live="polite">Your coordinates will appear here after permission is granted.</p>
+      </div>
+
+      <div id="eventCards" class="event-grid" aria-live="polite"></div>
+    </section>
+
+    <section id="register" class="section-block form-layout">
+      <div>
+        <h2 class="section-title">Event Registration</h2>
+        <p class="section-description">Use the form to reserve a seat. Required fields are validated before submission.</p>
+      </div>
+
+      <form id="registrationForm" class="portal-form">
+        <label>
+          Full name
+          <input name="name" type="text" placeholder="Enter your name" required autofocus>
+          <small class="error" data-error-for="name"></small>
+        </label>
+        <label>
+          Email
+          <input name="email" type="email" placeholder="name@example.com" required>
+          <small class="error" data-error-for="email"></small>
+        </label>
+        <label>
+          Phone
+          <input id="phoneInput" name="phone" type="tel" inputmode="numeric" maxlength="10" placeholder="10 digit phone number" onblur="validatePhone()" required>
+          <small id="phoneError" class="error"></small>
+        </label>
+        <label>
+          Preferred date
+          <input name="date" type="date" required>
+        </label>
+        <label>
+          Event type
+          <select id="eventType" name="eventType" onchange="showEventFee()" required>
+            <option value="">Choose an event type</option>
+            <option value="Music">Music</option>
+            <option value="Workshop">Workshop</option>
+            <option value="Health">Health</option>
+            <option value="Environment">Environment</option>
+            <option value="Culture">Culture</option>
+          </select>
+        </label>
+        <button id="clearPreferencesBtn" class="secondary-button" type="button">Clear Preferences</button>
+        <label>
+          Select event
+          <select id="selectedEvent" name="selectedEvent" required>
+            <option value="">Choose an event</option>
+          </select>
+        </label>
+        <label>
+          Message
+          <textarea name="message" placeholder="Share any accessibility needs or questions"></textarea>
+        </label>
+        <p id="feeOutput" class="fee-output">Choose an event type to see the fee.</p>
+        <button id="registerBtn" class="cta-button" type="submit" onclick="showClickConfirmation()">Register</button>
+        <p id="interactionStatus" class="interaction-status" aria-live="polite">Interaction messages will appear here.</p>
+        <output id="confirmationOutput" class="form-output"></output>
+      </form>
+    </section>
+
+    <section id="feedback" class="section-block split-section">
+      <div>
+        <h2 class="section-title">Event Feedback</h2>
+        <label class="portal-form compact-label">
+          Your feedback
+          <textarea id="feedbackText" maxlength="200" placeholder="Tell us what should improve" onkeydown="countCharacters()"></textarea>
+        </label>
+        <p id="charCount" class="char-count">0 / 200 characters typed</p>
+      </div>
+      <div class="video-panel">
+        <h3>Event Invite</h3>
+        <video controls width="100%" oncanplay="videoReady()">
+          <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" type="video/webm">
+          Your browser does not support the video element.
+        </video>
+        <p id="videoStatus" class="muted">Video is loading.</p>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <h2 class="section-title">Community Bulletin</h2>
+      <article class="news-article">
+        Residents are invited to participate in neighborhood clean-up drives, cultural programs,
+        wellness clinics, and weekend learning sessions. The city council publishes event updates
+        weekly so families can plan ahead. Volunteers may contact the community office to help with
+        seating, registration desks, accessibility assistance, and location guidance. New activities
+        are added throughout the month based on resident suggestions and venue availability.
+      </article>
+    </section>
+
+    <section class="section-block">
+      <h2 class="section-title">Admin Schedule Table</h2>
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Event</th>
+            <th>Category</th>
+            <th>Location</th>
+            <th>Seats</th>
+          </tr>
+        </thead>
+        <tbody id="adminRows"></tbody>
+      </table>
+    </section>
+
+    <section id="contact" class="section-block contact-band">
+      <h2>Contact</h2>
+      <p>Email: events@citycouncil.com | Phone: 9988855332 | Office: Visakhapatnam</p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>&copy; 2026 Local City Council. Built with HTML5, CSS3, and JavaScript.</p>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

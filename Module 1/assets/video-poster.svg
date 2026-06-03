@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <rect width="900" height="500" fill="#102a43"/>
+  <rect x="70" y="70" width="760" height="360" rx="16" fill="#176c5f"/>
+  <circle cx="450" cy="250" r="76" fill="#ffffff" opacity=".92"/>
+  <path d="M430 205l70 45-70 45z" fill="#b42318"/>
+  <text x="450" y="390" text-anchor="middle" font-family="Arial" font-size="38" font-weight="700" fill="#ffffff">Community Event Invite</text>
+</svg>

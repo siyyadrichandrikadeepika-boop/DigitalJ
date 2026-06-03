@@ -1,0 +1,68 @@
+[
+  {
+    "id": 1,
+    "name": "Riverside Music Night",
+    "date": "2026-07-12",
+    "category": "Music",
+    "location": "RK Beach, Visakhapatnam",
+    "latitude": 17.7145,
+    "longitude": 83.3237,
+    "seats": 24,
+    "fee": 100
+  },
+  {
+    "id": 2,
+    "name": "Baking Basics Workshop",
+    "date": "2026-07-18",
+    "category": "Workshop",
+    "location": "Tummalapalli Kalakshetram, Vijayawada",
+    "latitude": 16.5062,
+    "longitude": 80.648,
+    "seats": 16,
+    "fee": 150
+  },
+  {
+    "id": 3,
+    "name": "Free Health Screening",
+    "date": "2026-07-21",
+    "category": "Health",
+    "location": "Government General Hospital, Guntur",
+    "latitude": 16.3067,
+    "longitude": 80.4365,
+    "seats": 30,
+    "fee": 0
+  },
+  {
+    "id": 4,
+    "name": "Tree Planting Morning",
+    "date": "2026-08-02",
+    "category": "Environment",
+    "location": "Kolleru Lake Area, Eluru",
+    "latitude": 16.7107,
+    "longitude": 81.0952,
+    "seats": 20,
+    "fee": 0
+  },
+  {
+    "id": 5,
+    "name": "Local Arts Fair",
+    "date": "2026-08-10",
+    "category": "Culture",
+    "location": "Lepakshi Temple Grounds, Sri Sathya Sai District",
+    "latitude": 13.8032,
+    "longitude": 77.607,
+    "seats": 18,
+    "fee": 50
+  },
+  {
+    "id": 6,
+    "name": "Past Book Club Meetup",
+    "date": "2025-02-08",
+    "category": "Culture",
+    "location": "Sri Venkateswara University Library, Tirupati",
+    "latitude": 13.6288,
+    "longitude": 79.4192,
+    "seats": 12,
+    "fee": 0
+  }
+]
